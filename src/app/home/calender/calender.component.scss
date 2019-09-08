@@ -1,0 +1,79 @@
+@import "abstracts/variables";
+@import "abstracts/mixins";
+
+:host {
+  padding: $elem-margin;
+  position: absolute;
+  top: $header-height;
+  left: calc(#{$searcher-width} + #{$details-width});
+  width: calc(100% - #{$searcher-width} - #{$details-width});
+  height: calc(100% - #{$header-height});
+
+  @include unscrollableScreenHeight {
+    height: calc(#{$min-screen-height} - #{$header_height});
+  }
+
+  @include unscrollableScreenWidth {
+    left: calc(#{$min-screen-width} * .5);
+    width: calc(#{$min-screen-width} * .5 - 4 * #{$elem-margin});
+  }
+}
+
+#calender-container {
+  //margin: 0;
+  background: $elem-background;
+  height: 100%;
+  width: 100%;
+  border-radius: $elem-border-radius;
+}
+
+
+.flex-container {
+  display: flex;
+  height: calc(100% - 12rem - 2 * #{$elem-margin});
+
+  .sub-column {
+    padding: $elem-margin;
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 100%;
+    border-bottom-left-radius: $elem-border-radius;
+    border-bottom-right-radius: $elem-border-radius;
+
+    .heading-container {
+      height: 2rem;
+      width: 100%;
+      display: grid;
+      transform: skewY(-5deg);
+      text-align: center;
+      margin: .5rem 0;
+
+      .heading {
+        align-self: center;
+        cursor: default;
+        background: $background;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+
+    .sub-list {
+      background-color: $elem-background-light-1;
+      border-radius: $elem-border-radius;
+      padding: 0;
+      height: calc(100% - 2rem);
+      list-style: none;
+      max-height: 77rem;
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+  }
+
+  .recipes {
+    height: 100%;
+    width: 50%;
+  }
+}
+
+
